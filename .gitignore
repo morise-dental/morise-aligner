@@ -1,0 +1,7 @@
+# 大容量デザイン元資料 (40MB+) - Webデプロイ最適化のため除外
+*.pdf
+
+# OS・一時ファイル
+.DS_Store
+Thumbs.db
+*.log

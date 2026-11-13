@@ -1,0 +1,2035 @@
+@charset "UTF-8";
+/* =========================================================
+   森瀬歯科医院 LP - スタイルシート
+   完全レスポンシブ（スマホ・タブレット・PC最適化）
+   ========================================================= */
+
+:root {
+  --magenta: #cc4b97;
+  --magenta-deep: #b0357e;
+  --pink: #f29acd;
+  --pink-light: #fbebf5;
+  --pink-bg: #ffe9f6;
+  --pink-line: #f5bfdf;
+  --lav: #b3aef2;
+  --lav-deep: #8f86cb;
+  --lav-bg: #efedff;
+  --purple: #7d6fc7;
+  --gold: #c6b38a;
+  --gold-deep: #aa9569;
+  --gold-line: #d3c4a5;
+  --beige: #f5f2ee;
+  --ink: #38383c;
+  --text: #4e5360;
+  --sub: #787d8a;
+  --teal: #326c8a;
+  --navy: #1f2d42;
+
+  /* 指示3：うす水色パレット */
+  --blue-soft: #f0f8fe;
+  --blue-border: #bce0f6;
+  --blue-main: #3a96d2;
+  --blue-grad-1: #4da4e4;
+  --blue-grad-2: #308ecf;
+  --blue-text: #1a4971;
+
+  /* 指示2：淡いかわいいミントグリーンパレット */
+  --mint-bg: #eaf8f6;
+  --mint-light: #f4fbfb;
+  --mint-border: #84d8ce;
+  --mint-main: #2aa89b;
+  --mint-dark: #1f6b62;
+
+  /* プレミアム・ボタンカラー */
+  --line-green-1: #06c755;
+  --line-green-2: #00a843;
+  --line-shadow: rgba(6, 199, 85, 0.38);
+
+  --reserve-green-1: #10b981;
+  --reserve-green-2: #059669;
+  --reserve-shadow: rgba(16, 185, 129, 0.42);
+
+  --grad-soft: linear-gradient(110deg, #fef5fd 0%, #f3f0fe 50%, #e8f7fc 100%);
+  --grad-vivid: linear-gradient(75deg, #f7b7e6 0%, #d8aff9 45%, #b6bdfa 100%);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 10px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.85;
+  color: var(--text);
+  background: #f8f6f9;
+  font-feature-settings: "palt" 1;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* スマホの固定下部ボタンドックと被らないよう下部余白を常時確保 */
+  padding-bottom: calc(78px + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255, 215, 240, 0.65), transparent 45%),
+      radial-gradient(circle at 88% 45%, rgba(210, 225, 255, 0.7), transparent 45%),
+      linear-gradient(135deg, #fdf6fa 0%, #f4f2fe 50%, #eaf5fc 100%);
+    background-attachment: fixed;
+  }
+}
+
+img { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; }
+h1, h2, h3, p, ul, ol { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+address { font-style: normal; }
+button { font: inherit; cursor: pointer; border: 0; background: none; }
+
+.sr-only {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+.sp-only { display: inline; }
+@media (min-width: 768px) { .sp-only { display: none; } }
+
+/* =========================================================
+   共通コンテナ & セクション
+   ========================================================= */
+.lp {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 0 30px rgba(100, 60, 110, 0.08);
+}
+
+@media (min-width: 768px) {
+  .lp {
+    max-width: 1040px;
+    margin: 20px auto 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(80, 40, 100, 0.12);
+  }
+}
+
+section { position: relative; }
+
+.sec-inner {
+  width: 100%;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .sec-inner {
+    max-width: 960px;
+    padding-left: 3.6rem;
+    padding-right: 3.6rem;
+  }
+}
+
+.grad-soft { background: var(--grad-soft); }
+
+/* =========================================================
+   共通タイポグラフィ
+   ========================================================= */
+.body-text {
+  font-size: 1.45rem;
+  line-height: 1.9;
+  color: var(--text);
+  letter-spacing: .02em;
+}
+.body-text--tight { font-size: 1.25rem; line-height: 1.95; }
+
+@media (min-width: 768px) {
+  .body-text { font-size: 1.6rem; line-height: 1.95; }
+  .body-text--tight { font-size: 1.35rem; }
+}
+
+.note {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--sub);
+}
+@media (min-width: 768px) { .note { font-size: 1.2rem; } }
+
+/* 白帯ハイライト見出し */
+.hl-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--magenta);
+  letter-spacing: .03em;
+}
+.hl-title span {
+  display: table;
+  background: #fff;
+  padding: .15em .8em .15em .35em;
+  margin-left: -.35em;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(204, 75, 151, 0.08);
+}
+.hl-title span + span { margin-top: .55em; }
+.hl-title--dark { color: var(--ink); font-size: 2.2rem; }
+
+/* 指示2：淡いかわいいミントハイライト見出し */
+.hl-title--mint {
+  color: var(--mint-main);
+}
+.hl-title--mint span {
+  box-shadow: 0 2px 8px rgba(42, 168, 155, 0.12);
+}
+
+@media (min-width: 768px) {
+  .hl-title { font-size: 2.8rem; }
+  .hl-title--dark { font-size: 2.8rem; }
+}
+
+/* 英字タイトル */
+.en-title {
+  position: relative;
+  font-size: 2.6rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--pink);
+  padding: 2.5rem 0 1.4rem;
+}
+.en-title::after {
+  content: "";
+  position: absolute;
+  left: -2.4rem;
+  bottom: 0;
+  width: 15rem;
+  height: 1px;
+  background: var(--pink);
+}
+.en-title--sm {
+  font-size: 1.5rem;
+  color: var(--magenta);
+  padding: 2rem 0 .9rem;
+}
+.en-title--sm::after { width: 9.5rem; background: var(--pink-line); }
+
+@media (min-width: 768px) {
+  .en-title { font-size: 3.2rem; }
+  .en-title--sm { font-size: 1.8rem; }
+}
+
+/* 帯見出し */
+.band-title {
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  padding: 1.4rem 1rem 1.5rem;
+}
+.band-title--gold { background: var(--gold); color: #fff; }
+.band-title--beige { background: var(--beige); color: var(--ink); padding: 2.4rem 1rem 2.6rem; }
+.band-title--tall { padding: 3rem 1rem 4.6rem; }
+/* 指示3：治療の流れ見出し（うす水色調） */
+.band-title--flow {
+  background: linear-gradient(135deg, #e3f2fd 0%, #d8edf9 100%);
+  color: var(--blue-text);
+  padding: 2.2rem 1rem;
+  border-bottom: 2px solid var(--blue-border);
+}
+
+@media (min-width: 768px) {
+  .band-title { font-size: 3rem; padding: 2.2rem 1rem; }
+  .band-title--tall { padding: 4rem 1rem 5rem; }
+  .band-title--flow { font-size: 3rem; padding: 2.4rem 1rem; }
+}
+
+/* =========================================================
+   おしゃれなボタンデザイン (ページ内大ボタン)
+   ========================================================= */
+.btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 5.4rem;
+  padding: .9rem 2.4rem .9rem 3.6rem;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: .03em;
+  color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: transform .22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow .22s ease, filter .22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn__icon {
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  width: 2.1rem;
+  height: 2.1rem;
+  transform: translateY(-50%);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.btn__text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.btn__sub {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  opacity: .95;
+  margin-bottom: .2rem;
+}
+
+.btn__main {
+  font-size: clamp(1.3rem, 3.7vw, 1.62rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+.btn__arrow {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+  opacity: .9;
+  transition: transform .2s ease;
+}
+
+/* LINEボタン：深みのあるエメラルド〜LINEグリーン */
+.btn--line {
+  background: linear-gradient(135deg, var(--line-green-1) 0%, var(--line-green-2) 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 8px 24px -4px var(--line-shadow),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* WEB予約ボタン：信頼感と成約率の高いフォレストエメラルド */
+.btn--reserve {
+  background: linear-gradient(135deg, var(--reserve-green-1) 0%, var(--reserve-green-2) 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 8px 26px -4px var(--reserve-shadow),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.btn--lg {
+  min-height: 6rem;
+}
+.btn--lg .btn__main { font-size: 1.8rem; }
+.btn--lg .btn__sub { font-size: 1.15rem; }
+
+/* キラッと光るシマー（光彩アニメーション） */
+.btn::after, .fixed-cta__btn--reserve::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -70%;
+  width: 50%;
+  height: 140%;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-24deg);
+  animation: btnShine 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes btnShine {
+  0%, 65% { left: -70%; }
+  100% { left: 140%; }
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    filter: brightness(1.05);
+    transform: translateY(-2px);
+  }
+  .btn:hover .btn__arrow { transform: translate(3px, -50%); }
+  .btn--line:hover {
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.5),
+      0 12px 30px -4px var(--line-shadow),
+      0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  .btn--reserve:hover {
+    box-shadow:
+      inset 0 1px 1px rgba(255, 255, 255, 0.5),
+      0 12px 32px -4px var(--reserve-shadow),
+      0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+}
+.btn:active {
+  transform: translateY(1px);
+  filter: brightness(0.97);
+}
+
+@media (min-width: 768px) {
+  .btn {
+    padding: 1rem 3.6rem 1rem 4.8rem;
+  }
+  .btn__icon { left: 1.6rem; }
+  .btn__arrow { right: 1.8rem; }
+  .btn__main { font-size: 1.65rem; }
+  .btn--wide {
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 5.8rem;
+  }
+}
+
+/* サブボタン（地図・電話） */
+.btn-sub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  min-height: 4.6rem;
+  border: 1px solid #c9d9ea;
+  border-radius: 1rem;
+  background: #fff;
+  color: var(--navy);
+  font-size: 1.35rem;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: all .2s ease;
+}
+.btn-sub__icon { width: 1.8rem; height: 1.8rem; }
+@media (hover: hover) {
+  .btn-sub:hover {
+    background: #f4f8fc;
+    border-color: #a8c4e0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(50, 108, 138, 0.1);
+  }
+}
+
+/* =========================================================
+   PC専用 プレミアムヘッダー
+   ========================================================= */
+.pc-header { display: none; }
+
+@media (min-width: 768px) {
+  .pc-header {
+    display: block;
+    background: rgba(255, 255, 255, 0.94);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(220, 210, 230, 0.6);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(80, 40, 90, 0.06);
+  }
+  .pc-header__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 1.2rem 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .pc-header__sub {
+    font-size: 1.2rem;
+    color: var(--sub);
+    letter-spacing: .06em;
+  }
+  .pc-header__logo {
+    font-family: "Noto Serif JP", serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: .08em;
+    line-height: 1.2;
+    display: block;
+  }
+  .pc-header__info {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+  }
+  .pc-header__hours {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: .3rem;
+  }
+  .pc-header__badge {
+    display: inline-block;
+    background: var(--pink-bg);
+    color: var(--magenta);
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: .15rem .8rem;
+    border-radius: 999px;
+  }
+  .pc-header__time { font-size: 1.15rem; color: var(--text); }
+  .pc-header__tel {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+  }
+  .pc-header__tel-sub { font-size: 1.05rem; color: var(--sub); }
+  .pc-header__tel-num {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: .03em;
+    line-height: 1.2;
+  }
+  .pc-header__actions { display: flex; gap: 1.2rem; }
+  .btn--pc-header {
+    min-height: 4.8rem;
+    padding: .6rem 2rem .6rem 4.4rem;
+    font-size: 1.4rem;
+  }
+  .btn--pc-header .btn__icon { left: 1.4rem; width: 1.9rem; height: 1.9rem; }
+  .btn--pc-header .btn__sub { font-size: 0.95rem; }
+  .btn--pc-header .btn__main { font-size: 1.4rem; }
+}
+
+/* =========================================================
+   スマホ用 常時最下部固定ボタンドック (ずっと下に並べる)
+   ========================================================= */
+.fixed-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(220, 205, 230, 0.5);
+  box-shadow: 0 -4px 20px rgba(80, 40, 90, 0.12);
+  padding: .8rem 1rem calc(.8rem + env(safe-area-inset-bottom));
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .fixed-cta { display: none !important; }
+}
+
+.fixed-cta__inner {
+  max-width: 480px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+}
+
+.fixed-cta__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  height: 5.4rem;
+  padding: .4rem .8rem;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform .18s ease, filter .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fixed-cta__icon-wrap {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fixed-cta__icon { width: 2.2rem; height: 2.2rem; color: #fff; }
+
+.fixed-cta__text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.25;
+}
+
+.fixed-cta__badge {
+  font-size: .95rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  opacity: .95;
+}
+
+.fixed-cta__main {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.fixed-cta__btn--line {
+  background: linear-gradient(135deg, var(--line-green-1) 0%, var(--line-green-2) 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 4px 14px var(--line-shadow);
+}
+
+.fixed-cta__btn--reserve {
+  background: linear-gradient(135deg, var(--reserve-green-1) 0%, var(--reserve-green-2) 100%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 4px 14px var(--reserve-shadow);
+}
+
+.fixed-cta__btn:active {
+  transform: scale(0.97);
+  filter: brightness(0.96);
+}
+
+/* =========================================================
+   画像＋ホットスポット
+   ========================================================= */
+.img-map { position: relative; }
+.img-map img { width: 100%; height: auto; }
+.hotspot {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .2s;
+}
+@media (hover: hover) { .hotspot:hover { background: rgba(255,255,255,.14); } }
+
+@media (min-width: 768px) {
+  .fv, .speed { background: #fff; }
+  .fv .img-map, .speed .img-map {
+    max-width: 680px;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(100, 60, 110, 0.08);
+  }
+}
+
+/* =========================================================
+   03 理事長紹介 (PC 2カラム化)
+   ========================================================= */
+.doctor {
+  padding: 4.6rem 0 4.7rem;
+  background: linear-gradient(180deg, #e8f5ff 0%, #ceeaff 100%);
+}
+.doctor__title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--teal);
+  letter-spacing: .04em;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #b5daed;
+}
+.doctor__pill {
+  margin-top: 2.2rem;
+  padding: .55rem 1rem;
+  border-radius: 1.4rem;
+  background: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: .03em;
+}
+.doctor__photo {
+  margin-top: 1.7rem;
+  border-radius: 1.2rem 1.2rem 0 0;
+  overflow: hidden;
+  border-top: 1px solid #e3eef6;
+}
+.doctor__profile {
+  background: #4b8eab;
+  color: #fff;
+  padding: 2.6rem 1.9rem 2.7rem;
+  border-radius: 0 0 1.2rem 1.2rem;
+}
+.doctor__role { font-size: 1.15rem; font-weight: 700; letter-spacing: .03em; }
+.doctor__name {
+  font-size: 2.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  margin-top: .9rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+}
+.doctor__text { font-size: 1.38rem; line-height: 1.65; margin-top: 1.9rem; letter-spacing: .02em; }
+
+@media (min-width: 768px) {
+  .doctor { padding: 6rem 0; }
+  .doctor__grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .doctor__photo {
+    margin-top: 0;
+    border-radius: 1.6rem;
+    box-shadow: 0 8px 30px rgba(50, 108, 138, 0.18);
+  }
+  .doctor__profile {
+    margin-top: 2.4rem;
+    border-radius: 1.6rem;
+    padding: 3rem 2.8rem;
+  }
+  .doctor__title { font-size: 3.6rem; }
+  .doctor__pill { display: inline-block; padding: .8rem 2.4rem; font-size: 1.4rem; }
+}
+
+/* =========================================================
+   04-06 MORISE POINT
+   指示2：POINT 01 はピンク以外の淡いかわいいミントグリーン
+   ========================================================= */
+.point {
+  background: var(--pink-bg);
+  padding: 3.2rem 0 5.4rem;
+}
+.point--alt { background: #fff4fb; }
+
+/* 指示2：淡いかわいいミントグリーンカラー */
+.point--mint {
+  background: var(--mint-bg);
+}
+.point--mint .point__en {
+  color: var(--mint-main);
+}
+.point--mint .point__en::after {
+  background: var(--mint-border);
+}
+.point--mint .point__num {
+  color: #92ded6;
+}
+.point--mint .point__strong {
+  color: var(--mint-dark);
+}
+.point--mint .point__img {
+  box-shadow: 0 8px 24px rgba(42, 168, 155, 0.15);
+  border: 3px solid #fff;
+}
+
+.point__en {
+  position: relative;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--magenta);
+  letter-spacing: .01em;
+  padding-bottom: 1.25rem;
+}
+.point__en::after {
+  content: "";
+  position: absolute;
+  left: -2.4rem;
+  bottom: 0;
+  width: 12.4rem;
+  height: 1px;
+  background: #f3aed6;
+}
+.point__visual {
+  position: relative;
+  height: 33.6rem;
+}
+.point__num {
+  position: absolute;
+  left: .1rem;
+  top: 1.2rem;
+  font-size: 7.6rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--pink);
+  letter-spacing: -.01em;
+  z-index: 0;
+}
+.point__img {
+  position: absolute;
+  right: -.1rem;
+  top: 4.8rem;
+  width: 29rem;
+  height: 29rem;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(204, 75, 151, 0.12);
+}
+.point__img img { width: 100%; height: 100%; object-fit: cover; }
+.point .hl-title { margin-top: 4.9rem; }
+.point .body-text { margin-top: 2.6rem; }
+.point .note { margin-top: 4.2rem; }
+.point__strong { margin-top: 4.4rem; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+
+@media (min-width: 768px) {
+  .point { padding: 6rem 0; }
+  .point__grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .point--alt .point__grid { grid-template-columns: 1fr 320px; }
+  .point--alt .point__visual { order: 2; }
+  .point--alt .point__content { order: 1; }
+  .point__visual { height: 320px; }
+  .point__img { width: 300px; height: 300px; top: 10px; left: 10px; }
+  .point__num { font-size: 9rem; top: -10px; }
+  .point .hl-title { margin-top: 0; }
+  .point .body-text { margin-top: 2rem; }
+}
+
+/* =========================================================
+   07 子どもの歯並び
+   ========================================================= */
+.kids__head {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-radius: 1.6rem 1.6rem 0 0;
+}
+.kids__title { font-weight: 700; color: var(--ink); line-height: 1.3; }
+.kids__title-1 { display: block; font-size: 2.2rem; letter-spacing: .03em; }
+.kids__title-2 {
+  display: inline-block;
+  margin-top: 1.4rem;
+  background: var(--pink);
+  color: #fff;
+  font-size: 2.4rem;
+  padding: .3rem 1.6rem;
+  border-radius: 4px;
+}
+.kids__lead { margin-top: 2rem; font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+.kids__photo { position: relative; }
+.kids__vlabel {
+  position: absolute;
+  left: 2.2rem;
+  top: 2.6rem;
+  writing-mode: vertical-rl;
+  background: #fff;
+  color: var(--magenta);
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .14em;
+  padding: .6rem .3rem .4rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.kids__body { padding: 2.7rem 0 3.2rem; }
+.kids__body .note { margin-top: 3.2rem; }
+.kids__body .btn { margin-top: 3.4rem; }
+
+@media (min-width: 768px) {
+  .kids { padding: 5rem 0; }
+  .kids__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .kids__photo img { border-radius: 1.6rem; }
+  .kids__body { padding: 0; }
+  .kids__title-1 { font-size: 2.8rem; }
+  .kids__title-2 { font-size: 3rem; }
+}
+
+/* =========================================================
+   08 プレオルソ
+   ========================================================= */
+.ortho__visual { position: relative; }
+.ortho__visual .hl-title--over {
+  position: absolute;
+  left: 1.5rem;
+  top: 4.8rem;
+  font-size: 2.1rem;
+}
+.ortho__body { padding: 3.4rem 2.4rem 3.2rem; }
+.ortho__box {
+  position: relative;
+  background: #fff;
+  border: 1px solid #f2b8dc;
+  border-radius: 1.2rem;
+  text-align: center;
+  padding: 2.2rem 1.4rem;
+  color: var(--ink);
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(204, 75, 151, 0.08);
+}
+.ortho__box-1 { font-size: 1.7rem; }
+.ortho__box-2 { font-size: 2.4rem; margin-top: 1.2rem; }
+.ortho__box-3 { font-size: 1.35rem; margin-top: 1.6rem; color: var(--sub); }
+.ortho__body .body-text { margin-top: 3.2rem; }
+.ortho__body .note { margin-top: 2.4rem; }
+.ortho__body .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .ortho { padding: 5rem 0; }
+  .ortho__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .ortho__visual img { border-radius: 1.6rem; }
+  .ortho__body { border-radius: 1.6rem; padding: 4rem 3.6rem; }
+}
+
+/* =========================================================
+   09 症例
+   ========================================================= */
+.case { background: var(--pink-bg); padding: 3.2rem 0; }
+.case__item + .case__item { margin-top: 3.6rem; }
+.case__pair {
+  display: grid;
+  grid-template-columns: 1fr 1rem 1fr;
+  align-items: start;
+  margin-top: 2rem;
+}
+.case__zoom {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.case__zoom img { width: 100%; transition: transform .35s ease; }
+@media (hover: hover) { .case__zoom:hover img { transform: scale(1.04); } }
+.case__arrow { align-self: center; text-align: center; color: var(--magenta); font-size: 2rem; }
+.case__label {
+  margin: .8rem auto 0;
+  border: 1px solid;
+  border-radius: 999px;
+  background: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 2.4rem;
+  width: 90%;
+  font-weight: 700;
+}
+.case__label--before { color: var(--magenta); border-color: #f7c3e1; }
+.case__label--after { color: var(--purple); border-color: #d2cff7; }
+
+.info-card {
+  margin-top: 3.2rem;
+  background: #fff;
+  border-radius: 1.6rem;
+  padding: 2rem 2.4rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.info-card__title { font-size: 1.6rem; font-weight: 700; color: var(--ink); }
+.info-card__text { font-size: 1.35rem; line-height: 1.7; margin-top: 1rem; }
+.case .btn { margin-top: 3rem; }
+
+@media (min-width: 768px) {
+  .case { padding: 6rem 0; }
+  .case__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .case__item + .case__item { margin-top: 0; }
+}
+
+/* =========================================================
+   10 診察・検査
+   ========================================================= */
+.exam { background: #fff; padding-bottom: 4rem; }
+.exam__head { padding: 3.2rem 2rem 2rem; }
+.exam__lead { text-align: center; font-size: 2.2rem; font-weight: 700; color: var(--ink); }
+.exam .hl-title--dark { margin-top: 1.8rem; }
+.exam__tri {
+  height: 4.8rem;
+  background: var(--grad-soft);
+  position: relative;
+}
+.exam__tri::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--lav);
+  clip-path: polygon(0 0, 100% 0, 55% 100%, 45% 100%);
+}
+.exam__visual-wrap { position: relative; }
+.exam__photo figcaption { text-align: right; font-size: 1.1rem; color: var(--sub); padding-top: .4rem; }
+.exam__band {
+  background: var(--ink);
+  color: #fff;
+  padding: 2.4rem 2rem;
+  margin-top: -3rem;
+  border-radius: 1.2rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.exam__band-text { font-size: 2.2rem; font-weight: 700; line-height: 1.4; text-align: center; }
+.exam__band-text .l { color: #d1c8ff; display: block; margin-top: .6rem; }
+.exam__body { padding: 3.2rem 0; }
+
+@media (min-width: 768px) {
+  .exam { padding-bottom: 6rem; }
+  .exam__lead { font-size: 2.8rem; }
+  .exam__band { max-width: 720px; margin: -4rem auto 0; padding: 3rem 4rem; }
+  .exam__band-text { font-size: 2.8rem; }
+  .exam__photo img { border-radius: 1.6rem; max-width: 800px; margin: 0 auto; }
+}
+
+/* =========================================================
+   11 保証
+   ========================================================= */
+.warranty { background: var(--lav-bg); padding-bottom: 4rem; }
+.warranty__head {
+  padding: 3.6rem 2rem 2.8rem;
+  background: var(--grad-vivid);
+  text-align: center;
+}
+.warranty__title { font-size: 2.4rem; font-weight: 700; color: #fff; }
+.warranty__tri {
+  height: 4.8rem;
+  background: linear-gradient(90deg, #c7b4f7, #c1b3f7);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.warranty__body { padding: 2.4rem 0; text-align: center; }
+.warranty__sub { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+.warranty__years {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.4rem;
+  margin-top: 1.8rem;
+}
+.warranty__num {
+  font-size: 14rem;
+  font-weight: 300;
+  color: var(--magenta);
+  line-height: .8;
+}
+.warranty__unit { font-size: 3.2rem; font-weight: 700; color: var(--ink); padding-bottom: 1.2rem; }
+.warranty__main { margin-top: 3.6rem; font-size: 3.2rem; font-weight: 700; color: var(--ink); }
+.warranty .rule { border: 0; height: 1px; background: #d3d0e6; margin: 2.6rem auto; max-width: 600px; }
+.warranty .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .warranty { padding-bottom: 6rem; }
+  .warranty__title { font-size: 3.2rem; }
+  .warranty__num { font-size: 18rem; }
+  .warranty__main { font-size: 4rem; }
+  .warranty__body {
+    background: #fff;
+    border-radius: 2rem;
+    padding: 5rem 4rem;
+    max-width: 780px;
+    margin: 3rem auto 0;
+    box-shadow: 0 12px 36px rgba(125, 111, 199, 0.12);
+  }
+}
+
+/* =========================================================
+   12 ファストプラン
+   ========================================================= */
+.fast { background: #fff; padding-bottom: 4rem; }
+.fast__head {
+  padding: 3rem 2rem 2rem;
+  background: url("image/crystal-bg.webp") center / cover no-repeat;
+  text-align: center;
+}
+.fast__badge {
+  display: inline-block;
+  background: #fff;
+  color: var(--purple);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: .3rem 1.4rem;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.fast__title { font-size: 2.8rem; font-weight: 700; color: var(--ink); line-height: 1.5; }
+.fast__photo { margin: 2rem 0; }
+.fast__body { padding: 1rem 0; }
+.fast__name { font-size: 3rem; font-weight: 700; color: var(--ink); margin-bottom: 1.8rem; }
+.fast .btn { margin-top: 3rem; }
+
+@media (min-width: 768px) {
+  .fast { padding-bottom: 6rem; }
+  .fast__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .fast__photo img { border-radius: 1.6rem; }
+}
+
+/* =========================================================
+   13 価格
+   ========================================================= */
+.price { background: var(--beige); padding-bottom: 5rem; }
+.price__inner { padding: 3rem 0; }
+.campaign {
+  background: #fff;
+  border: 2px solid var(--magenta);
+  border-radius: 1.6rem;
+  padding: 1.8rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(204, 75, 151, 0.1);
+}
+.campaign__tag {
+  display: inline-block;
+  background: #eee5f8;
+  color: var(--purple);
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: .2rem 1.6rem;
+  border-radius: 999px;
+}
+.campaign__off {
+  display: block;
+  font-size: 3.4rem;
+  font-weight: 900;
+  color: var(--magenta);
+  margin: .6rem 0;
+}
+.campaign__cond { font-size: 1.2rem; color: var(--sub); }
+
+.plan {
+  margin-top: 2.8rem;
+  background: #fff;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+.plan__side {
+  background: #f4f2f8;
+  color: var(--lav-deep);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: .4rem;
+  letter-spacing: .2em;
+}
+.plan__head {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1.2rem;
+}
+.plan__head--pink { background: #d857a5; }
+.plan__head--lav { background: var(--lav); }
+.plan__content { padding: 2rem; text-align: center; }
+.plan__regular { font-size: 1.3rem; color: var(--sub); text-decoration: line-through; }
+.plan__after { font-size: 1.15rem; font-weight: 700; margin-top: .4rem; }
+.plan__after--pink { color: var(--magenta); }
+.plan__after--lav { color: var(--lav-deep); }
+.plan__price {
+  font-size: 4.8rem;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.1;
+  margin: .8rem 0 .2rem;
+}
+.plan__yen { font-size: 1.4rem; font-weight: 700; color: var(--ink); }
+.plan__desc { font-size: 1.25rem; color: var(--sub); margin-top: 1.6rem; }
+.price .body-text { margin-top: 2.8rem; }
+.price .note { margin-top: 1.6rem; }
+.price .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .price { padding-bottom: 7rem; }
+  .price__plans-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3.6rem;
+  }
+  .plan { margin-top: 0; }
+  .campaign { max-width: 600px; margin: 0 auto; }
+}
+
+/* =========================================================
+   14 お支払い
+   ========================================================= */
+.pay__head {
+  background: var(--ink);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+.pay__title { font-size: 2.6rem; font-weight: 700; }
+.pay__sub { font-size: 1.4rem; margin-top: 1rem; opacity: .9; }
+.pay__inner { padding: 3.6rem 0; }
+.pay-card {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--gold-line);
+  border-radius: 1.4rem;
+  padding: 2.4rem 2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+.pay-card + .pay-card { margin-top: 2rem; }
+.pay-card__icon { width: 3rem; height: 3rem; color: var(--gold-deep); flex-shrink: 0; margin-top: .4rem; }
+.pay-card__title { font-size: 1.9rem; font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+.pay-card__text { font-size: 1.35rem; line-height: 1.7; }
+.pay .btn { margin-top: 3.6rem; }
+
+@media (min-width: 768px) {
+  .pay__head { padding: 4rem 2rem; }
+  .pay__title { font-size: 3.2rem; }
+  .pay__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem;
+  }
+  .pay-card + .pay-card { margin-top: 0; }
+}
+
+/* =========================================================
+   15 医療費控除
+   指示1：「さらにを真ん中にして」反映
+   ========================================================= */
+.tax { background: var(--lav-bg); padding: 3.6rem 0 4rem; }
+
+/* 指示1：さらにを真ん中にして（画像1枚目再現：角丸長方形＆完全中央配置） */
+.tax__more-wrap {
+  text-align: center;
+  margin: 0 auto 1.8rem;
+  display: flex;
+  justify-content: center;
+}
+.tax__more-badge {
+  display: inline-block;
+  background: #fff;
+  color: #2b3040;
+  font-size: 2.4rem;
+  font-weight: 700;
+  padding: .7rem 2.8rem;
+  border-radius: 12px;
+  letter-spacing: .06em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+.tax__box {
+  background: #fff;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+.tax__title {
+  background: var(--pink);
+  color: #fff;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  padding: 1.8rem;
+}
+.tax__title span { font-size: 2.6rem; display: block; margin-top: .4rem; }
+.tax__text { padding: 2.4rem 2rem; font-size: 1.45rem; line-height: 1.85; }
+
+.calc {
+  margin-top: 2.8rem;
+  background: #fff;
+  border: 2px solid #f2b0d7;
+  border-radius: 1.6rem;
+  text-align: center;
+  padding: 2.4rem 2rem;
+  box-shadow: 0 6px 20px rgba(204, 75, 151, 0.08);
+}
+.calc__title { font-size: 1.5rem; font-weight: 700; color: var(--ink); }
+.calc__formula { font-size: 2.2rem; font-weight: 700; color: var(--ink); margin: 1.6rem 0 .8rem; }
+.calc__label { font-size: 1.35rem; color: var(--sub); }
+.calc__result {
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--magenta);
+  line-height: 1.1;
+  margin: .4rem 0 1rem;
+}
+.calc__warn { font-size: 1.2rem; font-weight: 700; color: var(--sub); }
+.tax .note { margin-top: 2.4rem; }
+.tax__link { text-align: center; margin-top: 2.4rem; font-size: 1.2rem; }
+.tax__link a { color: var(--purple); text-decoration: underline; font-weight: 500; }
+
+@media (min-width: 768px) {
+  .tax { padding: 6rem 0; }
+  .tax__more-badge { font-size: 3rem; padding: .8rem 4.4rem; }
+  .tax__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.6rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .tax__box, .calc { margin-top: 0; }
+}
+
+/* =========================================================
+   16 他院比較
+   指示2：S歯科・T歯科表記、個別に確認をいい感じに更新、スマホ改行最適化
+   ========================================================= */
+.compare__head {
+  background: linear-gradient(90deg, #f8d5ef 0%, #dcc3f6 55%, #c8b7f9 100%);
+  padding: 3rem 1.6rem;
+  text-align: center;
+}
+.compare__label { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: .8rem; }
+.hl-title--compare { color: var(--ink); font-size: 2.4rem; line-height: 1.45; }
+.hl-title--compare span { margin: 0 auto; }
+.compare__body {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #fcf5fd 0%, #f0effe 100%);
+}
+.compare__lead {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.6;
+}
+.compare__mini { text-align: center; font-size: 1.1rem; color: var(--sub); margin-top: .6rem; }
+
+.table-wrap {
+  margin-top: 2.4rem;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  background: #fff;
+  border: 1px solid #eadcec;
+}
+.ctable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.ctable th, .ctable td {
+  padding: 1.2rem .6rem;
+  text-align: center;
+  border: 1px solid #efe4f0;
+  vertical-align: middle;
+}
+.ctable thead th {
+  background: #f7eaf4;
+  color: var(--ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.ctable thead th.th-item { width: 22%; }
+.ctable thead th.is-us {
+  width: 32%;
+  background: var(--magenta);
+  color: #fff;
+  font-size: 1.3rem;
+}
+.ctable thead .th-sub {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: .95;
+}
+.ctable tbody th {
+  text-align: left;
+  background: #faf8fb;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  padding: 1rem .8rem;
+}
+.ctable td.is-us { background: #fdf5fc; }
+.ctable td b {
+  display: block;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.ctable td .highlight-zero {
+  color: var(--magenta);
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.ctable td .sub-desc {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--sub);
+  line-height: 1.35;
+  margin-top: .3rem;
+}
+.ctable__off { display: block; color: var(--magenta); font-weight: 700; font-size: .95rem; }
+.ctable__price { display: block; font-size: 1.45rem; font-weight: 700; color: var(--ink); margin: .3rem 0; }
+
+.mk { display: block; margin: 0 auto .4rem; width: 2.2rem; height: 2.2rem; position: relative; }
+.mk--circle, .mk--dbl { border: 2px solid var(--magenta); border-radius: 50%; }
+.mk--dbl::after {
+  content: ""; position: absolute; inset: 3px;
+  border: 2px solid var(--magenta); border-radius: 50%;
+}
+.mk--tri::before {
+  content: ""; position: absolute; inset: 0;
+  background: #a59ad6;
+  clip-path: polygon(50% 0, 100% 92%, 0 92%, 50% 0, 50% 12%, 10% 86%, 90% 86%, 50% 12%);
+}
+.mk--cross::before, .mk--cross::after {
+  content: ""; position: absolute; left: 50%; top: 50%;
+  width: 2.2rem; height: 2px; background: var(--magenta);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.mk--cross::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.compare__notes { margin-top: 1.8rem; font-size: 1.1rem; color: var(--sub); line-height: 1.7; }
+.compare__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+  margin-top: 1.6rem;
+  font-size: 1.2rem;
+}
+.compare__links a { color: var(--purple); text-decoration: underline; font-weight: 500; }
+.compare__date { text-align: center; font-size: 1.1rem; color: var(--sub); margin-top: 1rem; }
+.compare .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .hl-title--compare { font-size: 3rem; }
+  .ctable { font-size: 1.35rem; }
+  .ctable th, .ctable td { padding: 1.6rem 1.4rem; }
+  .ctable__price { font-size: 1.75rem; }
+  .ctable td b { font-size: 1.35rem; }
+  .ctable thead .th-sub { font-size: 1.15rem; }
+  .ctable td .sub-desc { font-size: 1.1rem; }
+}
+
+/* =========================================================
+   17-19 治療までの流れ
+   指示3：「３枚目のSTEP1～全部を四角形に変えてうす水色っぽいかわいくて見やすい感じにしてくださ。」反映
+   ========================================================= */
+.flow { background: #fff; padding-bottom: 4rem; }
+.flow__list { padding: 3rem 0; }
+.step + .step { margin-top: 3.6rem; }
+
+/* 指示3：四角形＆うす水色スタイル */
+.step--square-blue {
+  background: var(--blue-soft);
+  border: 1px solid var(--blue-border);
+  border-radius: 12px;
+  padding: 1.6rem 1.6rem 2rem;
+  box-shadow: 0 4px 16px rgba(58, 142, 207, 0.08);
+}
+
+.step--square-blue .step__head {
+  display: flex;
+  align-items: stretch;
+  border: 2px solid var(--blue-border);
+  border-radius: 8px; /* 指示3：四角形 */
+  overflow: hidden;
+  height: 4.4rem;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(58, 142, 207, 0.1);
+}
+
+.step--square-blue .step__no {
+  background: linear-gradient(135deg, var(--blue-grad-1) 0%, var(--blue-grad-2) 100%);
+  color: #fff;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 0 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0; /* 指示3：四角形 */
+  flex-shrink: 0;
+}
+
+.step--square-blue .step__title {
+  flex: 1;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--blue-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: .03em;
+  background: #fff;
+}
+
+.step__img {
+  margin: 1.6rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+.step__img figcaption { text-align: right; font-size: 1rem; color: var(--sub); padding-top: .4rem; }
+.step__text { font-size: 1.4rem; line-height: 1.8; color: var(--text); }
+
+@media (min-width: 768px) {
+  .flow { padding-bottom: 6rem; }
+  .flow__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.6rem;
+  }
+  .step + .step { margin-top: 0; }
+  .step--square-blue {
+    padding: 2.4rem;
+    border-radius: 16px;
+  }
+}
+
+/* =========================================================
+   20 VOICE（患者さまの声・自然な口コミ）
+   ========================================================= */
+.voice { background: #fce8f5; padding: 3.6rem 0 4rem; }
+.voice__title {
+  margin-top: 1.2rem;
+}
+.voice__title span {
+  display: block;
+  background: #fff;
+  color: var(--magenta);
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 700;
+  padding: 1rem 1.6rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(204, 75, 151, 0.08);
+}
+.voice__lead {
+  text-align: center;
+  font-size: 1.35rem;
+  color: #6a5568;
+  margin-top: 1.4rem;
+  line-height: 1.6;
+}
+.vcard {
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 1.6rem;
+  padding: 2.2rem 2rem 2.4rem;
+  box-shadow: 0 6px 22px rgba(204, 75, 151, 0.09);
+  border: 1px solid rgba(240, 198, 223, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.vcard__top {
+  display: flex;
+  gap: 1.4rem;
+  align-items: center;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px dashed #f2d8e9;
+}
+.vcard__avatar {
+  width: 6.8rem;
+  height: 6.8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f3d4e8;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.vcard__info {
+  flex: 1;
+  min-width: 0;
+}
+.vcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: .4rem;
+}
+.vcard__tag {
+  display: inline-block;
+  background: #fdf0f7;
+  color: var(--magenta);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: .2rem .7rem;
+  border-radius: 4px;
+}
+.vcard__tag--sub {
+  background: #f4f5f8;
+  color: #555;
+  font-weight: 500;
+}
+.vcard__author {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.vcard__rating {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: .3rem;
+}
+.vcard__stars {
+  color: #f5a623;
+  font-size: 1.3rem;
+  letter-spacing: .08em;
+}
+.vcard__score {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #d48312;
+}
+.vcard__title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.vcard__text {
+  font-size: 1.32rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+}
+.voice__foot {
+  text-align: center;
+  font-size: 1.15rem;
+  color: #8c7688;
+  margin-top: 2rem;
+}
+.voice .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .voice { padding: 6rem 0; }
+  .voice__title span { font-size: 3rem; padding: 1.2rem 2.4rem; }
+  .voice__lead { font-size: 1.5rem; margin-top: 1.8rem; }
+  .voice__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.4rem;
+    margin-top: 3.2rem;
+  }
+  .vcard { margin-top: 0; }
+}
+
+/* =========================================================
+   21 FAQ
+   ========================================================= */
+.faq { background: #fff; padding-bottom: 4rem; }
+.faq__head { padding: 3rem 2rem; text-align: center; }
+.faq__title { font-size: 2.8rem; font-weight: 700; color: var(--ink); }
+.faq__list { padding: 2.4rem 0; max-width: 780px; margin: 0 auto; }
+.faq__item {
+  border-bottom: 1px solid #ebe9f0;
+  padding: 1.8rem 0;
+}
+.faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__q {
+  color: var(--magenta);
+  font-size: 2.4rem;
+  font-weight: 300;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.faq__a {
+  padding: 1.4rem 0 .4rem 3.8rem;
+  font-size: 1.45rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+.faq .sec-btn { text-align: center; padding-top: 2rem; }
+
+/* =========================================================
+   22 リスク
+   ========================================================= */
+.risk { background: #faf9fb; padding-bottom: 4rem; }
+.risk__list { padding: 3rem 0; max-width: 860px; margin: 0 auto; }
+.risk__item {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 2.2rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+.risk__item + .risk__item { margin-top: 2rem; }
+.risk__item h3 { font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: .8rem; }
+.risk__item p { font-size: 1.35rem; line-height: 1.8; }
+.risk__note { max-width: 860px; margin: 0 auto; padding-top: 2rem; }
+
+@media (min-width: 768px) {
+  .risk { padding-bottom: 6rem; }
+  .risk__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
+  }
+  .risk__item + .risk__item { margin-top: 0; }
+}
+
+/* =========================================================
+   23 LINE (指示4：QRコード対応)
+   ========================================================= */
+.line { background: #fff; padding-bottom: 4rem; }
+.line__head {
+  padding: 3.6rem 2rem 2.8rem;
+  background: var(--grad-vivid);
+  text-align: center;
+}
+.line__t1 { font-size: 2.4rem; font-weight: 700; color: #fff; }
+.line__t2 span {
+  display: inline-block;
+  background: #fff;
+  color: var(--ink);
+  font-size: 2.8rem;
+  font-weight: 700;
+  padding: .4rem 2rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+.line__body { padding: 3rem 0; }
+.line__title { text-align: center; font-size: 2.6rem; font-weight: 700; color: var(--ink); }
+
+/* 指示4：LINE QRコードカード */
+.line__qr-card {
+  margin-top: 2.4rem;
+  background: #f4fbf7;
+  border: 2px dashed #68d391;
+  border-radius: 1.6rem;
+  padding: 2.4rem 2rem;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(6, 199, 85, 0.08);
+}
+.line__qr-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--line-green-2);
+  margin-bottom: 1.4rem;
+}
+.line__qr-box {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.line__qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.line__qr-label {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 1.2rem;
+}
+
+.chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 2.6rem;
+}
+.chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.4rem;
+  padding: .6rem 1.2rem;
+  border-radius: 999px;
+  background: #ffe6f5;
+  color: var(--magenta);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(204, 75, 151, 0.08);
+  transition: all .2s ease;
+}
+@media (hover: hover) {
+  .chip:hover {
+    background: var(--magenta);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(204, 75, 151, 0.25);
+  }
+}
+.line__note { text-align: center; font-size: 1.1rem; color: var(--sub); margin-top: 2rem; }
+.line .btn { margin-top: 3.2rem; }
+
+@media (min-width: 768px) {
+  .line { padding-bottom: 6rem; }
+  .line__grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 4.8rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .line__photo img { border-radius: 1.6rem; }
+  .line__title { text-align: left; }
+  .line__note { text-align: left; }
+  .line__qr-card { margin-top: 2rem; }
+}
+
+/* =========================================================
+   24 相談へ（指示7：ラベルを水平センター揃え）
+   ========================================================= */
+.consult { background: #c1c8d4; padding: 4rem 0; }
+.consult__label-wrap {
+  text-align: center;
+  margin: 0 auto 1.6rem;
+  display: flex;
+  justify-content: center;
+}
+.consult__label {
+  display: inline-block;
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.7rem;
+  font-weight: 700;
+  padding: .65rem 2.8rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.consult__title { text-align: center; color: #fff; font-size: 2.6rem; font-weight: 700; margin: 1.6rem 0 3rem; line-height: 1.6; }
+.consult__box {
+  background: #fff;
+  border-radius: 1.6rem;
+  padding: 2.6rem 2rem;
+  font-size: 1.5rem;
+  line-height: 1.9;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.consult .btn { margin-top: 2.8rem; }
+
+@media (min-width: 768px) {
+  .consult { padding: 6rem 0; }
+  .consult__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .consult__photo img { border-radius: 1.6rem; }
+}
+
+/* =========================================================
+   25 アクセス（Googleマップ埋め込み対応）
+   ========================================================= */
+.access { padding: 4rem 0; background: #fff; }
+.access__title { text-align: center; font-size: 2.8rem; font-weight: 700; color: #5b8a92; }
+.access__name {
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 1.6rem 0 2.4rem;
+}
+.access__photo { margin: 2rem 0; }
+.access__addr { font-size: 1.5rem; line-height: 1.8; color: var(--text); }
+.access__feat { font-size: 1.65rem; font-weight: 700; color: var(--ink); margin: 2rem 0 1rem; }
+.access__note { font-size: 1.2rem; color: var(--sub); }
+.access__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin: 2.4rem 0 2rem; }
+.access .btn { margin-top: 1rem; }
+
+/* Googleマップ埋め込み */
+.access__map-wrap {
+  margin: 2.8rem 0 2rem;
+  border-radius: 1.6rem;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #dde5ed;
+  background: #f8fafc;
+}
+.access__map {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+@media (min-width: 768px) {
+  .access { padding: 6rem 0; }
+  .access__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.8rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .access__photo img { border-radius: 1.6rem; }
+  .access__map { height: 400px; }
+}
+  }
+  .access__photo img { border-radius: 1.6rem; }
+}
+
+/* =========================================================
+   26 クロージング
+   ========================================================= */
+.final {
+  background: url("image/crystal-bg.webp") center / cover no-repeat;
+  padding: 4rem 0 5rem;
+}
+.final__title {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+.final__body { text-align: center; padding-top: 2rem; }
+.final__label {
+  display: inline-block;
+  background: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: .6rem 2.4rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+.final__zero {
+  font-size: 6.4rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+  margin: 2rem 0;
+}
+.final__sub { font-size: 1.25rem; font-weight: 700; color: var(--ink); margin: 2.4rem 0 1.6rem; }
+.final .btn + .btn { margin-top: 1.6rem; }
+
+@media (min-width: 768px) {
+  .final { padding: 7rem 0 8rem; }
+  .final__title { font-size: 3.4rem; }
+  .final__photo img { max-width: 780px; margin: 0 auto; border-radius: 1.6rem; }
+  .final__zero { font-size: 8rem; }
+}
+
+/* =========================================================
+   フッター
+   ========================================================= */
+.footer {
+  background: #2b2b2f;
+  color: #bbb;
+  text-align: center;
+  padding: 3.6rem 2rem;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+.footer__name {
+  font-family: "Noto Serif JP", serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.footer__hours { font-size: 1.15rem; color: #999; margin: .6rem 0; }
+.footer__copy { margin-top: 1.6rem; opacity: .7; font-size: 1.1rem; }
+
+/* TOPへ戻る */
+.to-top {
+  position: fixed;
+  right: 1.6rem;
+  bottom: calc(85px + env(safe-area-inset-bottom));
+  z-index: 999;
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--magenta);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: all .25s ease;
+}
+.to-top svg { width: 2.2rem; height: 2.2rem; }
+.to-top.is-show { opacity: 1; pointer-events: auto; }
+@media (min-width: 768px) {
+  .to-top { bottom: 30px; right: 30px; }
+}
+
+/* ライトボックス */
+.lightbox {
+  position: fixed; inset: 0; z-index: 10000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(15, 10, 20, 0.85);
+  padding: 2rem;
+}
+.lightbox[hidden] { display: none; }
+.lightbox__img { max-width: min(92vw, 900px); max-height: 85vh; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+.lightbox__close {
+  position: absolute; top: 1.6rem; right: 1.6rem;
+  width: 4.6rem; height: 4.6rem; border-radius: 50%;
+  background: #fff; color: #222; font-size: 3rem; line-height: 1;
+}
+
+/* =========================================================
+   アニメーション演出
+   ========================================================= */
+.js .js-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.js .js-reveal.is-in { opacity: 1; transform: none; }
+.js .js-zoom { transform: scale(.92); }
+.js .js-zoom.is-in { transform: none; }
+.js .hl-title.js-reveal span { clip-path: inset(0 100% 0 0); transition: clip-path .85s cubic-bezier(.6,.1,.2,1); }
+.js .hl-title.js-reveal.is-in span { clip-path: inset(0 0 0 0); }
+.js .hl-title.js-reveal.is-in span + span { transition-delay: .2s; }
+.js .hl-title.js-reveal { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .js-reveal, .js .js-zoom, .js .hl-title.js-reveal span { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+  .btn::after, .fixed-cta__btn--reserve::after { animation: none; display: none; }
+}
