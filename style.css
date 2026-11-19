@@ -650,16 +650,19 @@ section { position: relative; }
 
 /* FV キャンペーン＆月々料金カード */
 .fv-offer {
-  padding: .6rem 1rem 1.8rem;
+  position: relative;
+  z-index: 2;
+  padding: 0 1rem 1.4rem;
+  margin-top: -.4rem;
   background: #fff;
 }
 .fv-offer__card {
   position: relative;
-  margin-top: 1.4rem;
+  margin-top: 1rem;
   background: linear-gradient(180deg, #ffffff 0%, #fff9fc 100%);
   border: 1.5px solid #d5be8a;
-  border-radius: 1.4rem;
-  padding: 2.2rem .85rem 1.3rem;
+  border-radius: 1.2rem;
+  padding: 1.55rem .75rem 1.05rem;
   text-align: center;
   box-shadow: 0 8px 26px rgba(190, 120, 160, 0.12);
 }
@@ -671,13 +674,13 @@ section { position: relative; }
   justify-content: center;
   gap: .45rem;
   max-width: 100%;
-  margin: -3.8rem auto 1rem;
-  padding: .45rem 1.3rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #be1350 0%, #e03777 100%);
-  border: 2px solid #f5dd9c;
+  margin: -2.85rem auto .55rem;
+  padding: .4rem 1.35rem;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #b5154e 0%, #d42b68 100%);
+  border: 1.5px solid #f0d28b;
   color: #fff;
-  box-shadow: 0 6px 18px rgba(190, 19, 80, 0.34);
+  box-shadow: 0 4px 12px rgba(181, 21, 78, 0.28);
   white-space: nowrap;
 }
 .fv-offer__period {
@@ -686,58 +689,59 @@ section { position: relative; }
   letter-spacing: .03em;
 }
 .fv-offer__limit {
-  font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+  font-size: clamp(1.25rem, 3.6vw, 1.65rem);
   font-weight: 900;
-  letter-spacing: .03em;
-  color: #fff79e;
+  letter-spacing: .04em;
+  color: #fff6a1;
   line-height: 1;
 }
 .fv-offer__limit em {
   font-style: normal;
-  font-size: 1.35em;
+  font-size: 1.3em;
   color: #fff;
   margin: 0 .06rem;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .fv-offer__discount {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: .7rem;
+  gap: .65rem;
   flex-wrap: wrap;
 }
 .fv-offer__target {
   display: inline-block;
   background: #b5154e;
   color: #fff;
-  font-size: clamp(1.1rem, 3.1vw, 1.35rem);
+  font-size: clamp(1.05rem, 3vw, 1.3rem);
   font-weight: 700;
-  padding: .3rem 1rem;
+  padding: .28rem .95rem;
   border-radius: 4px;
   letter-spacing: .04em;
 }
 .fv-offer__off {
-  font-family: "Noto Serif JP", serif;
-  font-size: clamp(1.9rem, 5.4vw, 2.7rem);
-  font-weight: 700;
-  color: #b5154e;
-  line-height: 1.1;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(1.85rem, 5.2vw, 2.6rem);
+  font-weight: 900;
+  color: #a81047;
+  line-height: 1.05;
+  letter-spacing: -.01em;
 }
 .fv-offer__off em {
   font-style: normal;
-  font-size: 1.28em;
+  font-size: 1.25em;
   font-weight: 900;
   margin-right: .04em;
 }
 
 .fv-offer__bar {
-  margin: .85rem auto 1.1rem;
-  padding: .36rem 1.2rem;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #fde6f4 0%, #f5b6e2 50%, #fde6f4 100%);
+  margin: .5rem auto .75rem;
+  padding: .26rem 1rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #fdebf5 0%, #f7cce7 50%, #fdebf5 100%);
   color: #8f1042;
-  font-size: clamp(1.15rem, 3.3vw, 1.45rem);
+  font-size: clamp(1.08rem, 3.1vw, 1.38rem);
   font-weight: 700;
   letter-spacing: .08em;
 }
@@ -745,12 +749,12 @@ section { position: relative; }
 .fv-offer__plans {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: .7rem;
+  gap: .65rem;
 }
 .fv-plan {
   min-width: 0;
   background: #fff;
-  border-radius: 1rem;
+  border-radius: .9rem;
   overflow: hidden;
   border: 1px solid #ecdae9;
   box-shadow: 0 4px 14px rgba(100, 60, 110, 0.06);
@@ -758,8 +762,8 @@ section { position: relative; }
   flex-direction: column;
 }
 .fv-plan__head {
-  padding: .6rem .35rem;
-  font-size: clamp(1.15rem, 3.3vw, 1.55rem);
+  padding: .45rem .3rem;
+  font-size: clamp(1.12rem, 3.2vw, 1.5rem);
   font-weight: 700;
   line-height: 1.25;
   display: flex;
@@ -780,73 +784,74 @@ section { position: relative; }
   display: inline-block;
   background: #7b66c6;
   color: #fff;
-  font-size: .92rem;
+  font-size: .9rem;
   font-weight: 700;
-  padding: .12rem .55rem;
-  border-radius: 999px;
+  padding: .1rem .5rem;
+  border-radius: 3px;
   line-height: 1.3;
 }
 .fv-plan__body {
-  padding: .95rem .45rem 1.05rem;
+  padding: .6rem .4rem .75rem;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 .fv-plan__label {
-  font-size: clamp(1.05rem, 2.9vw, 1.25rem);
+  font-size: clamp(1rem, 2.8vw, 1.22rem);
   font-weight: 700;
   color: var(--ink);
   letter-spacing: .04em;
 }
 .fv-plan__price {
-  margin-top: .2rem;
-  color: #b5154e;
+  margin-top: .15rem;
+  color: #a81047;
   line-height: 1.05;
   white-space: nowrap;
 }
 .fv-plan__approx {
-  font-size: clamp(1rem, 2.8vw, 1.35rem);
-  font-weight: 700;
+  font-size: clamp(1.05rem, 2.9vw, 1.35rem);
+  font-weight: 900;
   margin-right: .1rem;
 }
 .fv-plan__price strong {
-  font-family: "Noto Serif JP", serif;
-  font-size: clamp(2.05rem, 6.2vw, 3.4rem);
-  font-weight: 700;
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: clamp(2.15rem, 6.4vw, 3.4rem);
+  font-weight: 900;
   letter-spacing: -.02em;
 }
 .fv-plan__yen {
-  font-size: clamp(1.1rem, 3.1vw, 1.65rem);
-  font-weight: 700;
+  font-size: clamp(1.15rem, 3.2vw, 1.65rem);
+  font-weight: 900;
   margin-left: .06rem;
 }
 .fv-plan__meta {
-  margin-top: .65rem;
-  padding-top: .55rem;
+  margin-top: .45rem;
+  padding-top: .4rem;
   border-top: 1px dashed #e6dde9;
-  font-size: clamp(.95rem, 2.55vw, 1.2rem);
-  line-height: 1.5;
+  font-size: clamp(.95rem, 2.55vw, 1.18rem);
+  line-height: 1.42;
   color: var(--text);
 }
 .fv-plan__meta strong {
   color: var(--ink);
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .fv-offer__check {
-  margin-top: 1.1rem;
+  margin-top: .75rem;
   display: inline-block;
   background: #f6f3fb;
   border: 1px solid #e2daf0;
-  border-radius: 999px;
-  padding: .42rem 1.35rem;
-  font-size: clamp(1.1rem, 3.1vw, 1.3rem);
+  border-radius: 4px;
+  padding: .36rem 1.2rem;
+  font-size: clamp(1.05rem, 3vw, 1.28rem);
   font-weight: 700;
   color: var(--ink);
 }
 .fv-offer__check strong {
-  color: #b5154e;
+  color: #a81047;
+  font-weight: 900;
 }
 .fv-offer__note {
   margin-top: .75rem;
@@ -2292,14 +2297,15 @@ section { position: relative; }
 .hl-title--fast {
   display: flex;
   justify-content: center;
-  font-size: clamp(2.4rem, 7vw, 3rem);
+  font-size: clamp(2rem, 6.1vw, 3rem);
   font-weight: 700;
   color: var(--magenta);
 }
 .hl-title--fast span {
   margin-left: 0;
-  padding: .22em .8em;
+  padding: .22em .65em;
   border: 1px solid var(--pink-line);
+  white-space: nowrap;
   box-shadow: 0 4px 14px rgba(204, 75, 151, 0.12);
 }
 .fast__sub {
