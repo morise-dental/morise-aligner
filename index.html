@@ -154,6 +154,7 @@
         </div>
 
         <p class="fv-offer__check">その他 来院時チェック料 <strong>3,300円</strong>（税込）／回</p>
+        <p class="fv-offer__note">※5.5万円引きはInstagramからのご予約など所定の条件がございます（<a href="#price-cond">適用条件を見る</a>）</p>
       </div>
     </div>
   </section>
@@ -298,21 +299,25 @@
       <div class="wcal__card js-reveal">
         <div class="wcal__head">
           <span class="wcal__pill">相談・精密検査・診断 0円</span>
-          <h3 class="wcal__title"><span>ご希望の日程</span>をタップして無料相談へ</h3>
+          <h3 class="wcal__title"><span>空き状況</span>を確認して無料相談へ</h3>
           <p class="wcal__lead">院長・歯科医師が丁寧にお話を伺います。ご相談だけでもお気軽にどうぞ。</p>
         </div>
 
         <div class="wcal__widget" data-wcal data-loc="wcal-top">
-          <div class="wcal__grid" role="group" aria-label="1週間の予約可能日"></div>
+          <div class="wcal__grid" role="group" aria-label="1週間の診療日"></div>
           <div class="wcal__foot">
             <p class="wcal__legend">
-              <span><i class="wcal__dot is-ok" aria-hidden="true">○</i> 予約可（日付をタップ）</span>
+              <span><i class="wcal__dot is-ok" aria-hidden="true">○</i> 診療日（空き枠を確認）</span>
               <span><i class="wcal__dot" aria-hidden="true">×</i> 当日</span>
               <span><i class="wcal__dot" aria-hidden="true">休</i> 休診日</span>
             </p>
             <a class="wcal__more js-cta" data-cta="reserve" data-loc="wcal-top-more" href="https://pgawebportal.yoyaku.media/?SecInfo=D5205E151039853368F676DCFFBDC21F" target="_blank" rel="noopener">他の日程・空き時間を見る ›</a>
           </div>
-          <p class="wcal__note">※火〜土診療（日・月・祝 休診）に基づく受付目安です。最新の空き枠は予約ページでご確認ください。</p>
+          <div class="wcal__notice">
+            <p class="wcal__notice-title">ご予約時期の目安について</p>
+            <p class="wcal__notice-text">時期によっては、ご案内が<strong>2〜3週間先</strong>になる場合がございます。ご希望の日程がある方は、お早めに空き状況をご確認ください。</p>
+          </div>
+          <p class="wcal__note">※上記は火〜土診療（日・月・祝 休診）の診療日目安です。実際の空き枠は予約ページでご確認ください。</p>
         </div>
       </div>
     </div>
@@ -725,7 +730,15 @@
         </div>
 
         <p class="body-text body-text--tight js-reveal">小児矯正は別料金です。費用・期間を個別にご案内します。<br>来院時チェック料3,300円／回（税込）は別途です。</p>
-        <p class="note js-reveal">適用期間・条件・空き状況は医院でご確認ください。</p>
+        <div class="campaign-cond js-reveal" id="price-cond">
+          <p class="campaign-cond__title">5.5万円引き 適用条件</p>
+          <ul class="campaign-cond__list">
+            <li>Instagramからのご予約であること</li>
+            <li>相談予約からご成約・治療スタートまで一度もキャンセルがないこと</li>
+            <li>12月・1月・2月 各月先着5名様（成人2コース合計）</li>
+          </ul>
+          <p class="campaign-cond__note">※適用期間・詳細・空き状況は医院にてご確認ください。</p>
+        </div>
         <a class="btn btn--reserve btn--wide js-cta js-reveal" data-cta="reserve" data-loc="price" href="https://pgawebportal.yoyaku.media/?SecInfo=D5205E151039853368F676DCFFBDC21F" target="_blank" rel="noopener">
           <svg class="btn__icon" aria-hidden="true"><use href="#i-cal"/></svg>
           <span class="btn__text-wrap">
@@ -898,8 +911,9 @@
               <tr>
                 <th scope="row">予約の<br class="sp-only">取りやすさ</th>
                 <td class="is-us">
-                  <i class="mk mk--circle" aria-label="○"></i>
-                  <span>Webで24h<br>空き確認・予約可</span>
+                  <i class="mk mk--tri" aria-label="△"></i>
+                  <span>時期により<br>2〜3週間先に<br>なる場合あり</span>
+                  <span class="sub-desc">Webで24h空き確認可<br>早めの予約が安心</span>
                 </td>
                 <td>
                   <span>時期・曜日により<br>混雑あり</span>
@@ -929,11 +943,6 @@
           <li>※各医院の保証や条件には所定の適用条件があります。</li>
           <li>※金額は税込です。当院はご提供資料に基づき、各院の最新条件をご確認ください。</li>
         </ul>
-        <div class="compare__links">
-          <a href="https://www.shimazakidental.com/invisalign/" target="_blank" rel="noopener">S歯科 公式掲載情報 →</a>
-          <a href="https://www.tanihata.info/mouthpiece" target="_blank" rel="noopener">T歯科 公式掲載情報 →</a>
-        </div>
-        <p class="compare__date">参照日：2026/11/3</p>
         <a class="btn btn--reserve btn--wide js-cta js-reveal" data-cta="reserve" data-loc="compare" href="https://pgawebportal.yoyaku.media/?SecInfo=D5205E151039853368F676DCFFBDC21F" target="_blank" rel="noopener">
           <svg class="btn__icon" aria-hidden="true"><use href="#i-cal"/></svg>
           <span class="btn__text-wrap">
@@ -1085,6 +1094,7 @@
     <div class="sec-inner">
       <div class="faq__list">
         <details class="faq__item js-reveal" open><summary><span class="faq__q">Q</span><span class="faq__qt">相談だけでも大丈夫ですか？</span></summary><p class="faq__a">ご希望や気になることを伺います。治療は、説明にご納得いただいてから進めます。</p></details>
+        <details class="faq__item js-reveal" open><summary><span class="faq__q">Q</span><span class="faq__qt">無料相談の予約はすぐ取れますか？</span></summary><p class="faq__a">時期によっては、ご案内が2〜3週間先になる場合がございます。ご予定がお決まりの方はお早めにWeb予約より空き状況をご確認ください。来院前に気になることがあれば、公式LINEから院長へ直接ご相談いただくことも可能です。</p></details>
         <details class="faq__item js-reveal" open><summary><span class="faq__q">Q</span><span class="faq__qt">子どもも相談できますか？</span></summary><p class="faq__a">小児矯正にも対応。生えかわりや成長に合う時期・方法・費用を個別にご案内します。</p></details>
         <details class="faq__item js-reveal" open><summary><span class="faq__q">Q</span><span class="faq__qt">表示の治療費以外にもかかりますか？</span></summary><p class="faq__a">来院時チェック料3,300円／回（税込）は別途です。その他の費用も開始前にご確認ください。</p></details>
         <details class="faq__item js-reveal" open><summary><span class="faq__q">Q</span><span class="faq__qt">ファストは必ず早く終わりますか？</span></summary><p class="faq__a">導入予定のプランです。適応・期間は、お口の状態・器具・経過によって異なります。</p></details>
@@ -1174,20 +1184,24 @@
         <div class="wcal__card js-reveal">
           <div class="wcal__head">
             <span class="wcal__pill">24時間いつでもWeb予約OK</span>
-            <h3 class="wcal__title"><span>○の日程</span>からそのままご予約いただけます</h3>
+            <h3 class="wcal__title"><span>診療日</span>をタップして空き状況を確認</h3>
             <p class="wcal__lead">無理な勧誘は一切ありません。まずは空き日程をご確認ください。</p>
           </div>
           <div class="wcal__widget" data-wcal data-loc="wcal-consult">
-            <div class="wcal__grid" role="group" aria-label="1週間の予約可能日"></div>
+            <div class="wcal__grid" role="group" aria-label="1週間の診療日"></div>
             <div class="wcal__foot">
               <p class="wcal__legend">
-                <span><i class="wcal__dot is-ok" aria-hidden="true">○</i> 予約可（日付をタップ）</span>
+                <span><i class="wcal__dot is-ok" aria-hidden="true">○</i> 診療日（空き枠を確認）</span>
                 <span><i class="wcal__dot" aria-hidden="true">×</i> 当日</span>
                 <span><i class="wcal__dot" aria-hidden="true">休</i> 休診日</span>
               </p>
               <a class="wcal__more js-cta" data-cta="reserve" data-loc="wcal-consult-more" href="https://pgawebportal.yoyaku.media/?SecInfo=D5205E151039853368F676DCFFBDC21F" target="_blank" rel="noopener">他の日程・空き時間を見る ›</a>
             </div>
-            <p class="wcal__note">※火〜土診療（日・月・祝 休診）に基づく受付目安です。最新の空き枠は予約ページでご確認ください。</p>
+            <div class="wcal__notice">
+              <p class="wcal__notice-title">ご予約時期の目安について</p>
+              <p class="wcal__notice-text">時期によっては、ご案内が<strong>2〜3週間先</strong>になる場合がございます。ご希望の日程がある方は、お早めに空き状況をご確認ください。</p>
+            </div>
+            <p class="wcal__note">※上記は火〜土診療（日・月・祝 休診）の診療日目安です。実際の空き枠は予約ページでご確認ください。</p>
           </div>
         </div>
       </div>

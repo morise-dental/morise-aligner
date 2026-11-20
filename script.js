@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
           col.rel = 'noopener';
           col.dataset.cta = 'reserve';
           col.dataset.loc = `${loc}-d${offset}`;
-          col.setAttribute('aria-label', `${month}月${day}日（${WEEKDAYS[dow]}）無料相談をWeb予約する`);
+          col.setAttribute('aria-label', `${month}月${day}日（${WEEKDAYS[dow]}）の空き状況をWebで確認する`);
         } else {
           col = document.createElement('div');
           col.className = 'wcal__day is-closed';
