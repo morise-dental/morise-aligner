@@ -105,7 +105,11 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 }
 
 .sp-only { display: inline; }
-@media (min-width: 768px) { .sp-only { display: none; } }
+.pc-only { display: none; }
+@media (min-width: 768px) {
+  .sp-only { display: none; }
+  .pc-only { display: inline; }
+}
 
 /* =========================================================
    共通コンテナ & セクション
@@ -491,7 +495,11 @@ section { position: relative; }
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: .3rem;
+    gap: .45rem;
+  }
+  .pc-header__badges {
+    display: flex;
+    gap: .5rem;
   }
   .pc-header__badge {
     display: inline-block;
@@ -502,7 +510,12 @@ section { position: relative; }
     padding: .15rem .8rem;
     border-radius: 999px;
   }
-  .pc-header__time { font-size: 1.15rem; color: var(--text); }
+  .pc-header__time {
+    font-size: 1.12rem;
+    line-height: 1.45;
+    color: var(--text);
+    white-space: nowrap;
+  }
   .pc-header__tel {
     text-align: right;
     display: flex;
@@ -3363,7 +3376,13 @@ section { position: relative; }
 }
 .access__photo { margin: 2rem 0; }
 .access__addr { font-size: 1.5rem; line-height: 1.8; color: var(--text); }
-.access__feat { font-size: 1.65rem; font-weight: 700; color: var(--ink); margin: 2rem 0 1rem; }
+.access__feat { font-size: 1.65rem; font-weight: 700; color: var(--ink); margin: 2rem 0 .8rem; }
+.access__hours {
+  font-size: 1.35rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: .6rem;
+}
 .access__note { font-size: 1.2rem; color: var(--sub); }
 .access__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin: 2.4rem 0 2rem; }
 .access .btn { margin-top: 1rem; }
